@@ -1,39 +1,17 @@
 import { useEffect, useState } from 'react';
 
+import { useForm } from '../hooks/useForm';
 import { Message } from './Message';
 
 export const FormWithCustomHook = () => {
-  const [formState, setFormState] = useState({
+  const { formState, handleChanges, username, email, password } = useForm({
     username: '',
     email: '',
     password: ''
   });
 
-  const { username, email, password } = formState;
-
-  const handleChanges = ({ target }) => {
-    const { name, value } = target;
-
-    setFormState({
-      ...formState,
-      [name]: value
-    });
-  };
-
-  /* This is a hook that is called only once. */
-  useEffect(() => {
-    // console.log('useEffect - only once');
-  }, []);
-
-  /* A hook that is called when the formState changes. */
-  useEffect(() => {
-    // console.log('useEffect - formState changed');
-  }, [formState]);
-
-  /* A hook that is called when the email changes. */
-  useEffect(() => {
-    // console.log('useEffect - email changed');
-  }, [email]);
+  /* Destructuring the formState object. */
+  // const { username, email, password } = formState;
 
   return (
     <>
@@ -50,7 +28,7 @@ export const FormWithCustomHook = () => {
 
       <input
         type='email'
-        className='form-control'
+        className='form-control mb-2'
         placeholder='test@email.com'
         name='email'
         value={email}
