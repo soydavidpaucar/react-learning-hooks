@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { Message } from './Message';
+
 export const SimpleForm = () => {
   const [formState, setFormState] = useState({
     username: 'davidp',
@@ -19,17 +21,17 @@ export const SimpleForm = () => {
 
   /* This is a hook that is called only once. */
   useEffect(() => {
-    console.log('useEffect - only once');
+    // console.log('useEffect - only once');
   }, []);
 
   /* A hook that is called when the formState changes. */
   useEffect(() => {
-    console.log('useEffect - formState changed');
+    // console.log('useEffect - formState changed');
   }, [formState]);
 
   /* A hook that is called when the email changes. */
   useEffect(() => {
-    console.log('useEffect - email changed');
+    // console.log('useEffect - email changed');
   }, [email]);
 
   return (
@@ -52,6 +54,8 @@ export const SimpleForm = () => {
         value={email}
         onChange={handleChanges}
       />
+
+      {username === 'david' && <Message />}
     </>
   );
 };
