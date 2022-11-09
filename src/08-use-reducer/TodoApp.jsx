@@ -1,64 +1,14 @@
-import { useEffect, useReducer } from 'react';
-
-import { todoReducer } from './todo-reducer';
+import { useTodo } from '../hooks';
 import { TodoAdd } from './TodoAdd';
 import { TodoList } from './TodoList';
 
-const initialState = [
-  /* {
-    id: new Date().getTime(),
-    description: 'Learn React',
-    done: false
-  } */
-];
-
-/**
- * If there are todos in localStorage, parse them and return them, otherwise return an empty array
- * @returns An array of todos.
- */
-const init = () => {
-  return JSON.parse(localStorage.getItem('todos')) || [];
-};
-
 export const TodoApp = () => {
-  const [todos, dispatch] = useReducer(todoReducer, initialState, init);
-
-  /* Saving the todos in localStorage. */
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
-
-  const handleNewTodo = (newTodo) => {
-    const action = {
-      type: 'add',
-      payload: newTodo
-    };
-
-    dispatch(action);
-  };
-
-  const handleDeleteTodo = (todoId) => {
-    const action = {
-      type: 'delete',
-      payload: todoId
-    };
-
-    dispatch(action);
-  };
-
-  const handleToggleTodo = (todoId) => {
-    const action = {
-      type: 'toggle',
-      payload: todoId
-    };
-
-    dispatch(action);
-  };
+  const { todos, totalTodos, pendingTodos, handleNewTodo, handleDeleteTodo, handleToggleTodo } = useTodo();
 
   return (
     <>
       <h1>
-        TodoApp {todos.length}, <small>Pending: 2</small>
+        TodoApp {totalTodos}, <small>Pending: {pendingTodos}</small>
       </h1>
       <hr />
 
