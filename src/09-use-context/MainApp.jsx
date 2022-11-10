@@ -8,7 +8,6 @@ import { Navbar } from './Navbar';
 export const MainApp = () => {
   return (
     <div>
-      <h1>MainApp</h1>
       <Navbar />
       <hr />
 
