@@ -6,10 +6,10 @@ export const useForm = (initialForm = {}) => {
   const handleChanges = ({ target }) => {
     const { name, value } = target;
 
-    setFormState({
-      ...formState,
-      [name]: value
-    });
+    setFormState((current) => ({
+      ...current,
+      [name]: value,
+    }));
   };
 
   const handleResetForm = () => {
