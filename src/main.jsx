@@ -2,9 +2,12 @@ import './index.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
-import { Father } from './07-memo-work/Father';
+import { MainApp } from './09-use-context/MainApp';
 
+// import { TodoApp } from './08-use-reducer/TodoApp';
+// import { Father } from './07-memo-work/Father';
 // import { CallbackHook } from './06-memos/CallbackHook';
 // import { Memorize } from './06-memos/Memorize';
 // import { Layout } from './05-use-layout-effect/Layout';
@@ -17,6 +20,8 @@ import { Father } from './07-memo-work/Father';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-  <Father />
+  <BrowserRouter>
+    <MainApp />
+  </BrowserRouter>
   // </React.StrictMode>
 );
