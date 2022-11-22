@@ -1,0 +1,20 @@
+// Vitest Snapshot v1
+
+exports[`test on TodoItem > should match snapshot 1`] = `
+<div>
+  <li
+    class="list-group-item d-flex justify-content-between"
+  >
+    <span
+      class="align-self-center"
+    >
+      Learn React
+    </span>
+    <button
+      class="btn btn-danger"
+    >
+      Delete
+    </button>
+  </li>
+</div>
+`;
